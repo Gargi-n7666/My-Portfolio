@@ -1,0 +1,1268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gargi Naik | Full Stack Java Developer</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #08080d;
+            --bg-light: #101018;
+            --card: #13131e;
+            --purple: #a855f7;
+            --purple-light: #c084fc;
+            --text: #f5f3ff;
+            --muted: #a1a1b5;
+            --border: rgba(168, 85, 247, 0.22);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        section {
+            padding: 100px 0;
+            scroll-margin-top: 65px;
+        }
+
+        .navbar {
+            background: rgba(8, 8, 13, 0.92);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .navbar-brand span {
+            color: var(--purple-light);
+        }
+
+        .nav-link {
+            color: #d4d4e2 !important;
+            font-size: 13px;
+            font-weight: 500;
+            margin-left: 13px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--purple-light) !important;
+        }
+
+        .navbar-toggler {
+            border-color: var(--border);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 2px var(--border);
+        }
+
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 110px 0 80px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 430px;
+            height: 430px;
+            background: #7e22ce;
+            filter: blur(180px);
+            opacity: 0.20;
+            top: 10%;
+            left: -180px;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: #9333ea;
+            filter: blur(180px);
+            opacity: 0.13;
+            bottom: -150px;
+            right: -100px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            border: 1px solid var(--border);
+            background: rgba(168, 85, 247, 0.08);
+            padding: 9px 15px;
+            border-radius: 30px;
+            font-size: 12px;
+            color: #e9d5ff;
+        }
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background: #a78bfa;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #a855f7;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 1.12;
+            letter-spacing: -3px;
+            font-weight: 700;
+            margin: 25px 0 15px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #c084fc, #9333ea, #e9d5ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero h3 {
+            font-size: clamp(18px, 2.3vw, 25px);
+            font-weight: 500;
+            color: #d4d4e8;
+        }
+
+        .hero-description {
+            color: var(--muted);
+            max-width: 560px;
+            line-height: 1.9;
+            margin: 24px 0 30px;
+            font-size: 15px;
+        }
+
+        .btn-purple {
+            color: white;
+            background: linear-gradient(135deg, #9333ea, #6d28d9);
+            border: 1px solid #a855f7;
+            padding: 13px 22px;
+            border-radius: 9px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .btn-purple:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px #9333ea50;
+        }
+
+        .btn-outline-purple {
+            border: 1px solid #6b4a91;
+            color: #e9d5ff;
+            padding: 13px 22px;
+            border-radius: 9px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .btn-outline-purple:hover {
+            background: #a855f7;
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #292536;
+            border-radius: 10px;
+            color: #d8b4fe;
+            background: #12111a;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #9333ea;
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        .photo-wrapper {
+            width: 310px;
+            height: 370px;
+            margin: auto;
+            position: relative;
+            padding: 6px;
+            border-radius: 155px 155px 25px 25px;
+            background: linear-gradient(145deg, #d8b4fe, #7e22ce, #25103f);
+            box-shadow: 0 0 60px #9333ea22;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 150px 150px 20px 20px;
+            background: #171322;
+        }
+
+        .photo-label {
+            position: absolute;
+            bottom: 22px;
+            left: -32px;
+            background: #171321;
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            box-shadow: 0 8px 25px #0008;
+        }
+
+        .photo-label i {
+            color: var(--purple-light);
+            margin-right: 7px;
+        }
+
+        .mini-stats {
+            margin-top: 45px;
+            padding-top: 25px;
+            border-top: 1px solid #282536;
+            display: flex;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        .mini-stats h4 {
+            font-size: 25px;
+            font-weight: 700;
+            color: #e9d5ff;
+            margin-bottom: 2px;
+        }
+
+        .mini-stats p {
+            font-size: 11px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .section-kicker {
+            color: var(--purple-light);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 13px;
+        }
+
+        .section-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(30px, 4vw, 43px);
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 15px auto 45px;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .dark-section {
+            background: #0d0d15;
+        }
+
+        .glass-card {
+            height: 100%;
+            padding: 28px;
+            border: 1px solid #272333;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #15141f, #0e0e16);
+            transition: 0.35s;
+        }
+
+        .glass-card:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-7px);
+            box-shadow: 0 15px 40px #6d28d915;
+        }
+
+        .card-icon {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: #2a1740;
+            color: #d8b4fe;
+            font-size: 23px;
+            margin-bottom: 22px;
+        }
+
+        .glass-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .glass-card p,
+        .glass-card li {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .skill-group-title {
+            color: #d8b4fe;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .skill-chip {
+            display: inline-block;
+            padding: 9px 13px;
+            margin: 4px 3px;
+            border: 1px solid #332643;
+            background: #171321;
+            color: #ddd6fe;
+            border-radius: 8px;
+            font-size: 12px;
+            transition: 0.25s;
+        }
+
+        .skill-chip:hover {
+            border-color: #a855f7;
+            background: #2a1740;
+            transform: translateY(-2px);
+        }
+
+        .project-number {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #c084fc;
+            margin-bottom: 18px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: "";
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            background: #9333ea;
+            filter: blur(90px);
+            opacity: 0.20;
+            top: -30px;
+            right: -30px;
+            pointer-events: none;
+        }
+
+        .tech-list {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .tech-list span {
+            padding: 6px 9px;
+            border-radius: 6px;
+            background: #21182e;
+            color: #d8b4fe;
+            font-size: 10px;
+        }
+
+        .experience-date {
+            color: #c084fc;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .education-score {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+            color: #d8b4fe;
+        }
+
+        .certification-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 18px;
+            border-bottom: 1px solid #292333;
+        }
+
+        .certification-item:last-child {
+            border-bottom: none;
+        }
+
+        .certification-item i {
+            color: #c084fc;
+            font-size: 20px;
+        }
+
+        .certification-item p {
+            margin: 0;
+            color: #e5e0f1;
+            font-size: 13px;
+        }
+
+        .certification-item small {
+            color: var(--muted);
+        }
+
+        .contact-panel {
+            background:
+                radial-gradient(ellipse at top left, #35145055, transparent 55%),
+                #111019;
+            border: 1px solid #3a254c;
+            border-radius: 20px;
+            padding: 45px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            background: #181520;
+            border: 1px solid #30263c;
+            border-radius: 10px;
+            color: white;
+            overflow-wrap: anywhere;
+            transition: 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: #a855f7;
+            color: #d8b4fe;
+        }
+
+        .contact-link i {
+            font-size: 21px;
+            color: #c084fc;
+        }
+
+        footer {
+            border-top: 1px solid #252131;
+            padding: 25px 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 991px) {
+            .nav-link {
+                margin-left: 0;
+                padding: 10px 0;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .photo-wrapper {
+                width: 260px;
+                height: 315px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            section {
+                padding: 72px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .contact-panel {
+                padding: 24px 18px;
+            }
+
+            .mini-stats {
+                gap: 22px;
+            }
+
+            .photo-label {
+                left: -12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand" href="#home">Gargi<span>.</span></a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                    <a href="#contact" class="btn btn-purple py-2 px-3">
+                        Let's Connect <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="container hero-content">
+        <div class="row align-items-center gy-5">
+
+            <div class="col-lg-7">
+                <div class="availability mb-2">
+                    <span class="status-dot"></span>
+                    COMPUTER SCIENCE GRADUATE
+                </div>
+
+                <h1>
+                    Hi, I'm Gargi<br>
+                    <span class="gradient-text">Naik.</span>
+                </h1>
+
+                <h3> Full Stack Java Developer</h3>
+
+                <p class="hero-description">
+                    I build backend applications, REST APIs and
+                    user-friendly web solutions. Passionate about Java,
+                    problem-solving and creating software that solves
+                    real-world problems.
+                </p>
+
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#projects" class="btn btn-purple">
+                        Explore My Work
+                        <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline-purple">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/Gargi-n7666"
+                       target="_blank" rel="noopener noreferrer"
+                       aria-label="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
+
+                    <a href="mailto:garginaik04@gmail.com"
+                       aria-label="Email">
+                        <i class="bi bi-envelope"></i>
+                    </a>
+
+                    <!-- Replace # with your LinkedIn profile URL -->
+                    <a href="#contact" aria-label="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
+
+                <div class="mini-stats">
+                    <div>
+                        <h4>8.5</h4>
+                        <p>Graduation CGPA</p>
+                    </div>
+
+                    <div>
+                        <h4>03</h4>
+                        <p>Featured Projects</p>
+                    </div>
+
+                    <div>
+                        <h4>02</h4>
+                        <p>Internships</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="photo-wrapper">
+                    <!-- Save your photo as myphoto.jpg beside index.html -->
+                    <img src="./Gargi Photo.jpeg"
+                         alt="Gargi Naik"
+                         class="profile-photo"
+                         onerror="this.style.visibility='hidden'; this.parentElement.classList.add('photo-placeholder');">
+                    <div class="photo-label">
+                        <i class="bi bi-code-slash"></i>
+                        Building &nbsp;•&nbsp; Learning &nbsp;•&nbsp; Growing
+                    </div>
+                </div>
+                <p class="text-center mt-4 small" style="color: #a1a1b5;">
+                    Software Development · Backend Engineering
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="dark-section" id="about">
+    <div class="container">
+        <div class="text-center reveal">
+            <p class="section-kicker">GET TO KNOW ME</p>
+            <h2 class="section-heading">About <span class="gradient-text">Me</span></h2>
+            <p class="section-description">
+                A little about my background, technical interests and career goals.
+            </p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-9 reveal">
+                <div class="glass-card">
+                    <div class="card-icon">
+                        <i class="bi bi-person-workspace"></i>
+                    </div>
+
+                    <h3>Turning Ideas Into Applications</h3>
+
+                    <p>
+                        I am a Computer Science and Engineering graduate
+                        from Babasaheb Naik College of Engineering, Pusad,
+                        with a CGPA of 8.5.
+                    </p>
+
+                    <p>
+                        My technical foundation includes Java, Object-Oriented
+                        Programming, SQL, Spring Boot, Hibernate, JDBC and
+                        REST API development. I have practical internship
+                        experience in AI/Machine Learning and Web Development.
+                    </p>
+
+                    <p class="mb-0">
+                        I am looking for an entry-level Java Developer
+                        opportunity where I can contribute to software
+                        projects, improve my development skills and grow
+                        as an engineer.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="container">
+        <div class="text-center reveal">
+            <p class="section-kicker">MY TECH STACK</p>
+            <h2 class="section-heading">Skills & <span class="gradient-text">Technologies</span></h2>
+            <p class="section-description">
+                Tools and technologies from my learning and project experience.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-code-slash"></i></div>
+                    <h3>Programming</h3>
+                    <div>
+                        <span class="skill-chip">Java</span>
+                        <span class="skill-chip">Python</span>
+                        <span class="skill-chip">SQL</span>
+                        <span class="skill-chip">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-gear-wide-connected"></i></div>
+                    <h3>Java & Backend</h3>
+                    <div>
+                        <span class="skill-chip">Spring Boot</span>
+                        <span class="skill-chip">Spring MVC</span>
+                        <span class="skill-chip">Hibernate</span>
+                        <span class="skill-chip">JDBC</span>
+                        <span class="skill-chip">REST APIs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-database"></i></div>
+                    <h3>Databases</h3>
+                    <div>
+                        <span class="skill-chip">MySQL</span>
+                        <span class="skill-chip">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-window"></i></div>
+                    <h3>Web Development</h3>
+                    <div>
+                        <span class="skill-chip">HTML5</span>
+                        <span class="skill-chip">CSS3</span>
+                        <span class="skill-chip">Bootstrap</span>
+                        <span class="skill-chip">Tailwind CSS</span>
+                        <span class="skill-chip">React.js</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-lightbulb"></i></div>
+                    <h3>Core Concepts</h3>
+                    <div>
+                        <span class="skill-chip">OOP</span>
+                        <span class="skill-chip">Collections</span>
+                        <span class="skill-chip">Exception Handling</span>
+                        <span class="skill-chip">DSA</span>
+                        <span class="skill-chip">DBMS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-tools"></i></div>
+                    <h3>Developer Tools</h3>
+                    <div>
+                        <span class="skill-chip">Git</span>
+                        <span class="skill-chip">GitHub</span>
+                        <span class="skill-chip">IntelliJ IDEA</span>
+                        <span class="skill-chip">VS Code</span>
+                        <span class="skill-chip">Postman</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- EXPERIENCE -->
+<section class="dark-section" id="experience">
+    <div class="container">
+        <div class="text-center reveal">
+            <p class="section-kicker">MY JOURNEY</p>
+            <h2 class="section-heading">Internship <span class="gradient-text">Experience</span></h2>
+            <p class="section-description">
+                Practical exposure to development and machine learning.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-cpu"></i></div>
+                    <p class="experience-date">JUL 2025 — DEC 2025</p>
+                    <h3>AI / Machine Learning Intern</h3>
+                    <p style="color:#d8b4fe;">S2P Edutech</p>
+                    <ul>
+                        <li>Contributed to AI-based projects using supervised learning concepts.</li>
+                        <li>Assisted in developing and training machine learning models using Python.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-code-square"></i></div>
+                    <p class="experience-date">JAN 2025 — FEB 2025</p>
+                    <h3>Web Developer Intern</h3>
+                    <p style="color:#d8b4fe;">Cognifyz Technologies</p>
+                    <ul>
+                        <li>Developed responsive web page components using HTML, CSS and Bootstrap.</li>
+                        <li>Collaborated with team members to build user-friendly interfaces.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+        <div class="text-center reveal">
+            <p class="section-kicker">WHAT I'VE BUILT</p>
+            <h2 class="section-heading">Featured <span class="gradient-text">Projects</span></h2>
+            <p class="section-description">
+                Practical applications that demonstrate my development skills.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- PROJECT 1 -->
+            <div class="col-lg-4 col-md-6 reveal">
+                <div class="glass-card project-card">
+                    <p class="project-number">PROJECT 01 / HEALTHCARE AI</p>
+                    <div class="card-icon"><i class="bi bi-heart-pulse"></i></div>
+
+                    <h3>NurseBot</h3>
+                    <p style="color:#d8b4fe;">AI-Powered Healthcare Assistant</p>
+
+                    <p>
+                        Developed an AI healthcare assistant that analyzes
+                        blood glucose reports and provides context-aware
+                        responses. Integrated backend APIs and patient
+                        data management.
+                    </p>
+
+                    <div class="tech-list">
+                        <span>React.js</span>
+                        <span>Python</span>
+                        <span>FastAPI</span>
+                        <span>MongoDB</span>
+                        <span>Mistral AI</span>
+                        <span>NLP</span>
+                        <span>Pinecone</span>
+                        <span>JWT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 2 -->
+            <div class="col-lg-4 col-md-6 reveal">
+                <div class="glass-card project-card">
+                    <p class="project-number">PROJECT 02 / AGRICULTURE</p>
+                    <div class="card-icon"><i class="bi bi-flower1"></i></div>
+
+                    <h3>Krishi</h3>
+                    <p style="color:#d8b4fe;">Agriculture Information Platform</p>
+
+                    <p>
+                        Developed an agriculture information platform
+                        providing farming resources, crop suggestions,
+                        market prices and weather updates.
+                    </p>
+
+                    <div class="tech-list">
+                        <span>Node.js</span>
+                        <span>Express.js</span>
+                        <span>EJS</span>
+                        <span>MongoDB</span>
+                        <span>Mongoose</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 3 -->
+            <div class="col-lg-4 col-md-6 reveal">
+                <div class="glass-card project-card">
+                    <p class="project-number">PROJECT 03 / JAVA BACKEND</p>
+                    <div class="card-icon"><i class="bi bi-mortarboard"></i></div>
+
+                    <h3>Academic Records</h3>
+                    <p style="color:#d8b4fe;">Academic Records Management Platform</p>
+
+                    <p>
+                        Developed a student tracking platform to manage
+                        student profiles, academic records and enrollment
+                        details. Implemented REST APIs for CRUD operations.
+                    </p>
+
+                    <div class="tech-list">
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>Spring Data JPA</span>
+                        <span>MySQL</span>
+                        <span>REST APIs</span>
+                        <span>Postman</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- EDUCATION -->
+<section class="dark-section" id="education">
+    <div class="container">
+        <div class="text-center reveal">
+            <p class="section-kicker">ACADEMIC BACKGROUND</p>
+            <h2 class="section-heading">My <span class="gradient-text">Education</span></h2>
+            <p class="section-description">
+                My educational qualifications and academic achievements.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-mortarboard"></i></div>
+                    <p class="experience-date">NOV 2022 — MAY 2026</p>
+                    <h3>Bachelor of Engineering</h3>
+                    <p>Computer Science & Engineering</p>
+                    <p>Babasaheb Naik College of Engineering, Pusad</p>
+                    <div class="education-score">8.5 CGPA</div>
+                </div>
+            </div>
+
+            <div class="col-md-4 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-book"></i></div>
+                    <p class="experience-date">2022</p>
+                    <h3>Higher Secondary (HSC)</h3>
+                    <p>Vasantrao Naik College, Chikhli</p>
+                    <div class="education-score">87.67%</div>
+                </div>
+            </div>
+
+            <div class="col-md-4 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-journal-bookmark"></i></div>
+                    <p class="experience-date">2020</p>
+                    <h3>Secondary School (CBSE)</h3>
+                    <p>Jet Kids International School, Pusad</p>
+                    <div class="education-score">90%</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+    <div class="container">
+        <div class="text-center reveal">
+            <p class="section-kicker">CONTINUOUS LEARNING</p>
+            <h2 class="section-heading">Certifications & <span class="gradient-text">Learning</span></h2>
+            <p class="section-description">
+                Courses and certifications listed in my resume.
+            </p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-9 reveal">
+                <div class="glass-card">
+
+                    <div class="certification-item">
+                        <i class="bi bi-patch-check"></i>
+                        <div>
+                            <p>NPTEL — Software Testing</p>
+                        </div>
+                    </div>
+
+                    <div class="certification-item">
+                        <i class="bi bi-patch-check"></i>
+                        <div>
+                            <p>NPTEL — Database Management Systems</p>
+                        </div>
+                    </div>
+
+                    <div class="certification-item">
+                        <i class="bi bi-patch-check"></i>
+                        <div>
+                            <p>InnovEdge — Advanced Cloud Computing Cybersecurity Analyst by TATA</p>
+                        </div>
+                    </div>
+
+                    <div class="certification-item">
+                        <i class="bi bi-patch-check"></i>
+                        <div>
+                            <p>Accenture (Forage) — Data Analytics and Visualization</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- LEADERSHIP -->
+<section class="dark-section" id="leadership">
+    <div class="container">
+        <div class="text-center reveal">
+            <p class="section-kicker">BEYOND CODING</p>
+            <h2 class="section-heading">Leadership & <span class="gradient-text">Achievements</span></h2>
+        </div>
+
+        <div class="row g-4 mt-3">
+
+            <div class="col-md-6 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-people"></i></div>
+                    <h3>Event Convenor & Coordinator</h3>
+                    <p>
+                        IE(I) Students Chapter, CSE Department.
+                        Organized and led multiple interschool events
+                        and seminars.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 reveal">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="bi bi-code-square"></i></div>
+                    <h3>Software Developer Lead</h3>
+                    <p>
+                        Hica Technical Club. Collaborated with design
+                        and content teams to build user-friendly,
+                        responsive interfaces and created tutorial
+                        videos to simplify complex concepts.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-panel reveal">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-lg-5">
+                    <p class="section-kicker">LET'S CONNECT</p>
+                    <h2 class="section-heading">
+                        Let's Build Something <span class="gradient-text">Great.</span>
+                    </h2>
+
+                    <p class="mt-4" style="color:var(--muted); line-height:1.9; font-size:14px;">
+                        Looking for an entry-level Java Developer opportunity
+                        or a chance to collaborate on an interesting project?
+                        Feel free to connect with me.
+                    </p>
+
+                    <a href="mailto:garginaik04@gmail.com"
+                       class="btn btn-purple mt-3">
+                        <i class="bi bi-envelope me-2"></i> Email Me
+                    </a>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="d-grid gap-3">
+
+                        <a class="contact-link"
+                           href="mailto:garginaik04@gmail.com">
+                            <i class="bi bi-envelope"></i>
+                            <div>
+                                <small style="color:var(--muted);">EMAIL</small>
+                                <div>garginaik04@gmail.com</div>
+                            </div>
+                        </a>
+
+                        <a class="contact-link" href="tel:+917666262831">
+                            <i class="bi bi-telephone"></i>
+                            <div>
+                                <small style="color:var(--muted);">PHONE</small>
+                                <div>+91 7666262831</div>
+                            </div>
+                        </a>
+
+                        <a class="contact-link"
+                           href="https://github.com/Gargi-n7666"
+                           target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github"></i>
+                            <div>
+                                <small style="color:var(--muted);">GITHUB</small>
+                                <div>github.com/Gargi-n7666</div>
+                            </div>
+                        </a>
+
+                        <div class="contact-link">
+                            <i class="bi bi-geo-alt"></i>
+                            <div>
+                                <small style="color:var(--muted);">LOCATION</small>
+                                <div>Pune, Maharashtra, India</div>
+                            </div>
+                        </div>
+
+                    
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    <div class="container d-flex flex-column flex-md-row
+                justify-content-between align-items-center gap-2">
+        <p class="mb-0">
+            © 2026 Gargi Naik. All rights reserved.
+        </p>
+
+        <p class="mb-0">
+            Crafted with <span style="color:#c084fc;">♥</span>
+            using Bootstrap 5
+        </p>
+
+        <a href="#home" class="gradient-text">
+            Back to top ↑
+        </a>
+    </div>
+</footer>
+
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Reveal cards smoothly when they enter the screen
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12
+        });
+
+        revealElements.forEach((element) => {
+            observer.observe(element);
+        });
+    } else {
+        revealElements.forEach((element) => {
+            element.classList.add("visible");
+        });
+    }
+
+    // Close the mobile navbar after selecting a section
+    document.querySelectorAll("#mainNavbar .nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+            const menu = document.getElementById("mainNavbar");
+
+            if (menu.classList.contains("show")) {
+                bootstrap.Collapse.getOrCreateInstance(menu).hide();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
